@@ -1,5 +1,16 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Login from "./pages/login";
+import Register from './pages/register';
+
 const App = () => {
-  return <div className="text-blue-950 font-extrabold text-4xl">CHAT APPLICATION</div>
+  return <>
+    <BrowserRouter>
+      <Routes>
+        <Route index path='/login' element={<Login/>} />
+        <Route path='/register' element={<Register/>}/>
+      </Routes>
+    </BrowserRouter>
+  </>
 }
 
 export default App;
