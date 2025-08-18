@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { logout } from '../services/authService';
 import { useNavigate } from 'react-router-dom';
+import Header from '../components/header';
+import SideBar from '../components/sideBar';
+import ChatSpace from '../components/chatSpace';
 
 const Home = () => {
   const { user, setUser } = useAuth();
@@ -12,12 +15,15 @@ const Home = () => {
     setUser(null);
     navigate('/');
   };
+  console.log(user);
 
   return (
     <div>
-      <h1>Welcome{user?.email ? `, ${user.email}` : 'no email'}</h1>
-      <button onClick={handleLogout}>Logout</button>
-      {/* Chat UI goes here */}
+      <Header user={user}/>
+      <div className='flex flex-row w-full h-[calc(100vh-4rem)]'>
+        <SideBar/>
+        <ChatSpace/>
+      </div>
     </div>
   );
 };

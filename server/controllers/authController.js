@@ -54,7 +54,7 @@ exports.getUser = async (req, res) => {
         const user = await User.findById(req.userId);
         if (!user) return res.status(404).json({ error: 'User not found' });
     
-        res.json({ user: { email: user.email } });
+        res.json({ user: { email: user.email, name: user.firstName, photo: user.profilePhoto } });
     } catch (err) {
         console.error('Auth check error:', err);
         res.status(500).json({ error: 'Server error during auth check' });
