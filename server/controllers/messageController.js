@@ -7,6 +7,10 @@ exports.sendMessage = async (req, res) => {
   try {
     const message = new Message({ chat: chatId, sender: senderId, content });
     await message.save();
+
+    const io = req.app.get('io'); // ✅ Access io from app
+    io.to(chatId).emit('newMessage', message); // ✅ Emit to room
+
     res.status(201).json(message);
   } catch (err) {
     res.status(500).json({ error: 'Message send failed' });

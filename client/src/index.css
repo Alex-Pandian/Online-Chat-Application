@@ -3,3 +3,37 @@
 body {
     font-family: 'Roboto', sans-serif;
 }
+
+::-webkit-scrollbar {
+    width: 6px;              /* thin scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent; /* no track */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(107, 114, 128, 0.6); /* Tailwind gray-500 w/ opacity */
+    border-radius: 9999px;   /* rounded-full */
+    transition: background 0.3s;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(156, 163, 175, 0.8); /* Tailwind gray-400 */
+  }
+  
+  /* Auto-hide scrollbar (Chrome, Edge, Safari) */
+  ::-webkit-scrollbar {
+    display: none; /* hide by default */
+  }
+  
+  .scroll-container:hover::-webkit-scrollbar,
+  .scroll-container:focus-within::-webkit-scrollbar {
+    display: block; /* show only on hover/focus */
+  }
+  
+  /* For Firefox */
+  .scroll-container {
+    scrollbar-width: thin;           /* thin scrollbar */
+    scrollbar-color: #6b7280 transparent; /* thumb + track */
+  }

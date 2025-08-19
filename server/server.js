@@ -24,6 +24,8 @@ const io = new Server(server, {
   },
 });
 
+app.set('io', io);
+
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(cors({ origin: process.env.ORIGIN, credentials: true }));
@@ -33,6 +35,8 @@ connectDB();
 app.use('/api', authRoutes);
 app.use('/api', chatRoutes);
 app.use('/api', messageRoutes);
+
+
 
 io.on('connection', (socket) => {
   console.log('🔌 Socket connected:', socket.id);
